@@ -1,3 +1,15 @@
+# 自用网址导航
+##. 基于 Gourds/WebStackLaravel 的 docker 部署方案进行改进。
+  1. 增加持久化部分
+  2. 把自己调整后的 WebStack-Laravel 文件放入。不再使用 Gourds/WebStackLaravel 默认镜像里的文件。
+  
+
+## 基于 gz-hejiehui/WebStack-Laravel 源文件做些小调整，方便自己使用。
+  1. 去掉右上角的广告图标
+
+
+
+
 # WebStack-Laravel
 
 一个开源的网址导航网站项目，具备完整的前后台，您可以拿来制作自己的网址导航。
@@ -6,7 +18,7 @@
 
 
 
-## 部署
+## 部署（不可用。。）
 
 克隆代码：
 
