@@ -1,11 +1,65 @@
 ### 修改部分
 
-
+- 关闭右上角的广告链接
+```shell
+# 查找并注释广告链接
 find /opt/navi | xargs grep "https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"
 ./resources/views/about.blade.php
 ./resources/views/index.blade.php
 
 
+cp /opt/navi/resources/views/about.blade.php /opt/navi/resources/views/about.blade.php.bak
+cp /opt/navi/resources/views/index.blade.php /opt/navi/resources/views/index.blade.php.bak
+vi /opt/navi/resources/views/about.blade.php
+vi /opt/navi/resources/views/index.blade.php
+```
+
+- 替换Logo
+```shell
+# 替换如下目录内的所有logo
+/opt/navi/resources/assets/web-stack/images
+
+
+```
+
+- 备份数据库
+```shell
+docker exec -it mysql_wsl /bin/bash
+mysql -uroot -pTym8zzrnNRpz4
+use webstack;
+show tables;
++------------------------+
+| Tables_in_webstack     |
++------------------------+
+| admin_menu             |
+| admin_operation_log    |
+| admin_permissions      |
+| admin_role_menu        |
+| admin_role_permissions |
+| admin_role_users       |
+| admin_roles            |
+| admin_user_permissions |
+| admin_users            |
+| categories             |
+| migrations             |
+| sites                  |
++------------------------+
+12 rows in set (0.00 sec)
+quit
+
+mysqldump -uroot -pTym8zzrnNRpz4 webstack > backup.sql
+
+```
+- 恢复数据库
+```shell
+mysql -uroot -p
+create database webstack;
+use webstack;
+source /root/backup.sql
+select * from admin_users;
+
+
+```
 
 
 ### 项目介绍（fork 前原版内容）
